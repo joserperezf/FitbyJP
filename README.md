@@ -42,8 +42,9 @@ En este repositorio se incluye una carpeta llamada `VersionEscritorio` con la ap
 
 A continuación, algunas vistas de la aplicación funcionando:
 
-*(Las capturas se encuentran en la carpeta de documentación del proyecto)*
-- **Dashboard:** Consumo de frases y conexión a wearables.
-- **Rutinas:** Lista de tareas deportivas (Swipe to delete).
-- **Mapa:** Tracking de GPS con Leaflet.
-- **Perfil:** Captura de fotos.
+<div align="center">
+  <img src="docs/dashboard.png" width="200" style="margin: 10px;">
+  <img src="docs/rutinas.png" width="200" style="margin: 10px;">
+  <img src="docs/mapa.png" width="200" style="margin: 10px;">
+  <img src="docs/progreso.png" width="200" style="margin: 10px;">
+</div>
