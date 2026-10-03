@@ -1,0 +1,110 @@
+<ion-content [fullscreen]="true">
+  
+  <!-- Perfil Header -->
+  <div class="profile-header">
+    <div class="profile-info">
+
+      
+      <div class="user-details">
+        <h2>JP Fitness</h2>
+        <p>Miembro desde enero 2026</p>
+        <div class="streak-badge">
+          <ion-icon name="flame" color="warning"></ion-icon>
+          Racha: {{ racha }} días
+        </div>
+      </div>
+    </div>
+
+    <div class="current-weight">
+      <div class="weight-value">{{ pesoActual }}</div>
+      <div class="weight-label">kg actual</div>
+    </div>
+  </div>
+
+  <!-- Estadísticas pequeñas -->
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="s-val text-primary">{{ perdido }} kg</div>
+      <div class="s-lbl">Perdido</div>
+    </div>
+    <div class="stat-box">
+      <div class="s-val text-secondary">{{ sesiones }}</div>
+      <div class="s-lbl">Sesiones</div>
+    </div>
+    <div class="stat-box" (click)="cambiarMeta()" style="cursor: pointer;">
+      <div class="s-val text-medium">{{ pesoMeta }} kg</div>
+      <div class="s-lbl">Meta</div>
+    </div>
+  </div>
+
+  <!-- Gráfica de peso -->
+  <ion-card class="chart-card">
+    <ion-card-header>
+      <div class="c-header-row">
+        <ion-card-title>Pérdida de peso</ion-card-title>
+        <span class="c-highlight">{{ perdido }} kg</span>
+      </div>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="mock-chart">
+        <!-- SVG simulando la gráfica de la imagen -->
+        <svg viewBox="0 0 300 120" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="rgba(0, 255, 115, 0.2)" />
+              <stop offset="100%" stop-color="rgba(0, 255, 115, 0)" />
+            </linearGradient>
+          </defs>
+          <polygon [attr.points]="graphPoints.polygon" fill="url(#grad)" />
+          <polyline [attr.points]="graphPoints.polyline" fill="none" stroke="var(--ion-color-primary)" stroke-width="2" />
+          <circle *ngFor="let pt of graphPoints.circles" [attr.cx]="pt.cx" [attr.cy]="pt.cy" r="3" fill="var(--ion-background-color)" stroke="var(--ion-color-primary)" stroke-width="2"/>
+        </svg>
+        <div class="x-axis">
+          <span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span><span>Jul</span>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Fotos de progreso -->
+  <div class="photos-section">
+    <div class="section-header">
+      <h2>Fotos de progreso</h2>
+      <a href="#" (click)="tomarFoto($event)">+ Añadir</a>
+    </div>
+    
+    <div class="photos-grid">
+      <div class="photo-card" *ngFor="let p of fotos">
+        <img [src]="p.url" />
+        <div class="photo-label">{{ p.mes }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón grande para registrar peso -->
+  <div class="btn-container">
+    <ion-button expand="block" color="primary" class="main-btn" (click)="abrirModal()">
+      <ion-icon slot="start" name="add-outline"></ion-icon>
+      Registrar nuevo peso
+    </ion-button>
+  </div>
+
+  <!-- MODAL TIPO BOTTOM SHEET -->
+  <ion-modal #modalRegistro [initialBreakpoint]="0.35" [breakpoints]="[0, 0.35]" class="bottom-sheet-modal">
+    <ng-template>
+      <div class="modal-content-wrapper">
+        <div class="drag-handle"></div>
+        <h2 class="modal-title">Nuevo registro</h2>
+        
+        <div class="input-box">
+          <input type="number" [(ngModel)]="nuevoPesoEntrada" class="huge-input" />
+        </div>
+        
+        <ion-button expand="block" color="primary" class="main-btn" (click)="guardarPeso()">
+          Guardar
+        </ion-button>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>

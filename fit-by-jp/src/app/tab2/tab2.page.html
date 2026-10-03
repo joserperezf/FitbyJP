@@ -1,0 +1,93 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>
+      <div class="subtitle">{{ fechaActual }}</div>
+      <div class="main-title">Mis Rutinas</div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <!-- Tarjeta de Progreso -->
+  <ion-card class="progress-card">
+    <ion-card-content>
+      <div class="progress-header">
+        <span>Completados hoy</span>
+        <span class="progress-text">{{completados}}/{{total}}</span>
+      </div>
+      <ion-progress-bar color="primary" [value]="progreso"></ion-progress-bar>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Reproductor Multimedia (Música de Entrenamiento) -->
+  <ion-card class="music-card" style="background: rgba(30,30,30,0.8); border: 1px solid rgba(255,255,255,0.1);">
+    <ion-card-content>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h3 style="margin: 0; font-size: 14px; font-weight: bold; color: #fff;">{{ currentSongName || 'Sin música seleccionada' }}</h3>
+          <p style="margin: 2px 0 0 0; font-size: 11px; color: var(--ion-color-medium);">Música de Entrenamiento</p>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <ion-button fill="clear" size="small" (click)="audioInput.click()">
+            <ion-icon name="folder-open-outline" style="color: var(--ion-color-primary);"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" size="small" (click)="togglePlay()" [disabled]="!audioPlayer.src">
+            <ion-icon [name]="isPlaying ? 'pause' : 'play'" style="color: #fff;"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" size="small" (click)="nextSong()" [disabled]="!playlist.length">
+            <ion-icon name="play-skip-forward" style="color: #fff;"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+      <input type="file" #audioInput accept="audio/*" multiple style="display: none" (change)="onFilesSelected($event)">
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Lista de Ejercicios -->
+  <ion-list lines="none" class="transparent-list">
+    <ion-item-sliding *ngFor="let ej of ejercicios" #slidingItem>
+      
+      <!-- Opciones al deslizar (Swipe to right en el diseño, en Ionic usamos slot="end") -->
+      <ion-item-options side="end">
+        <ion-item-option color="primary" (click)="marcarCompletado(ej, slidingItem)" class="swipe-btn">
+          <div class="swipe-btn-content">
+            <ion-icon name="checkmark-outline" size="large"></ion-icon>
+            <span>Hecho</span>
+          </div>
+        </ion-item-option>
+      </ion-item-options>
+
+      <ion-item [class.completed-item]="ej.completado" class="exercise-item">
+        <!-- Ícono a la izquierda -->
+        <div slot="start" class="icon-container" [class.icon-completed]="ej.completado">
+          <ion-icon *ngIf="!ej.completado" [name]="ej.icono"></ion-icon>
+          <ion-icon *ngIf="ej.completado" name="checkmark"></ion-icon>
+        </div>
+        
+        <!-- Detalles del Ejercicio -->
+        <ion-label>
+          <h2 [class.text-completed]="ej.completado">{{ ej.nombre }}</h2>
+          <p [class.text-completed]="ej.completado">{{ ej.series }} &times; {{ ej.repeticiones }} &middot; {{ ej.peso }}</p>
+        </ion-label>
+        
+        <!-- Flecha a la derecha -->
+        <ion-icon slot="end" name="chevron-forward-outline" color="medium"></ion-icon>
+      </ion-item>
+
+    </ion-item-sliding>
+  </ion-list>
+
+  <div class="hint-text">
+    <small>&larr; Desliza para marcar como hecho</small>
+  </div>
+
+  <!-- Botón Agregar Ejercicio -->
+  <div class="add-btn-container">
+    <ion-button expand="block" fill="outline" color="medium" class="dashed-btn" (click)="agregarEjercicio()">
+      <ion-icon slot="start" name="add-outline"></ion-icon>
+      Agregar ejercicio
+    </ion-button>
+  </div>
+
+</ion-content>

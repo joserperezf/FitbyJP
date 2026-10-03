@@ -1,0 +1,293 @@
+ion-content {
+  --background: var(--ion-background-color);
+  --padding-bottom: 20px;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 16px 20px;
+
+  .profile-info {
+    display: flex;
+    align-items: center;
+
+    .avatar-container {
+      position: relative;
+      margin-right: 16px;
+
+      ion-avatar {
+        width: 64px;
+        height: 64px;
+        border: 2px solid var(--ion-color-primary);
+      }
+
+      .medal-badge {
+        position: absolute;
+        bottom: -4px;
+        right: -4px;
+        background: #222;
+        border-radius: 50%;
+        font-size: 14px;
+        padding: 4px;
+        border: 2px solid var(--ion-background-color);
+      }
+    }
+
+    .user-details {
+      h2 {
+        font-size: 20px;
+        font-weight: 800;
+        margin: 0 0 4px 0;
+      }
+      p {
+        font-size: 12px;
+        color: var(--ion-color-medium);
+        margin: 0 0 8px 0;
+      }
+      .streak-badge {
+        display: inline-flex;
+        align-items: center;
+        background: rgba(var(--ion-color-primary-rgb), 0.1);
+        color: var(--ion-color-primary);
+        font-size: 11px;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 12px;
+        border: 1px solid rgba(var(--ion-color-primary-rgb), 0.3);
+        
+        ion-icon {
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+
+  .current-weight {
+    text-align: right;
+    
+    .weight-value {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--ion-color-primary);
+      line-height: 1;
+    }
+    .weight-label {
+      font-size: 12px;
+      color: var(--ion-color-medium);
+      margin-top: 4px;
+    }
+  }
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+  margin-bottom: 24px;
+
+  .stat-box {
+    flex: 1;
+    background: var(--ion-card-background);
+    border-radius: 16px;
+    padding: 16px 0;
+    text-align: center;
+    border: 1px solid var(--ion-color-step-200);
+    margin: 0 4px;
+    
+    &:first-child { margin-left: 0; }
+    &:last-child { margin-right: 0; }
+
+    .s-val {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    
+    .text-primary { color: var(--ion-color-primary); }
+    .text-secondary { color: var(--ion-color-secondary); }
+    .text-medium { color: var(--ion-color-step-400); }
+
+    .s-lbl {
+      font-size: 12px;
+      color: var(--ion-color-medium);
+    }
+  }
+}
+
+.chart-card {
+  margin: 0 16px 24px;
+  background: var(--ion-card-background);
+  border-radius: 20px;
+  box-shadow: none;
+  border: 1px solid var(--ion-color-step-200);
+
+  .c-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ion-card-title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    
+    .c-highlight {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--ion-color-primary);
+    }
+  }
+
+  .mock-chart {
+    position: relative;
+    padding-top: 10px;
+    
+    svg {
+      width: 100%;
+      height: 100px;
+    }
+    
+    .x-axis {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      padding: 0 5px;
+      
+      span {
+        font-size: 10px;
+        color: var(--ion-color-medium);
+      }
+    }
+  }
+}
+
+.photos-section {
+  padding: 0 16px;
+  margin-bottom: 30px;
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+
+    h2 {
+      font-size: 18px;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    a {
+      font-size: 14px;
+      color: var(--ion-color-primary);
+      text-decoration: none;
+      font-weight: 700;
+    }
+  }
+
+  .photos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    
+    .photo-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 1; // Cuadrados perfectos
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      .photo-label {
+        position: absolute;
+        bottom: 6px;
+        left: 6px;
+        font-size: 11px;
+        font-weight: 700;
+        color: #fff;
+        text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+      }
+    }
+  }
+}
+
+.btn-container {
+  padding: 0 16px;
+  
+  .main-btn {
+    --border-radius: 16px;
+    height: 60px;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: none;
+    color: #000;
+  }
+}
+
+// Estilos específicos para el modal Bottom Sheet
+.bottom-sheet-modal {
+  --border-radius: 24px 24px 0 0;
+  --background: var(--ion-color-step-100);
+}
+
+.modal-content-wrapper {
+  padding: 16px 24px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  background: var(--ion-color-step-100);
+
+  .drag-handle {
+    width: 40px;
+    height: 4px;
+    background: var(--ion-color-step-300);
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+
+  .modal-title {
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0 0 30px 0;
+    align-self: flex-start;
+  }
+
+  .input-box {
+    width: 100%;
+    margin-bottom: 30px;
+    
+    .huge-input {
+      width: 100%;
+      background: transparent;
+      border: 2px solid var(--ion-color-primary);
+      border-radius: 16px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: 900;
+      text-align: center;
+      padding: 16px;
+      outline: none;
+      
+      &:focus {
+        box-shadow: 0 0 0 4px rgba(var(--ion-color-primary-rgb), 0.2);
+      }
+    }
+  }
+
+  .main-btn {
+    --border-radius: 16px;
+    height: 60px;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: none;
+    color: #000;
+    width: 100%;
+  }
+}

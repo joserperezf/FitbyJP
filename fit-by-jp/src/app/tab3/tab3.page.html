@@ -1,0 +1,52 @@
+<ion-content [fullscreen]="true" class="no-scroll">
+  
+  <div id="map-container" class="simulated-map">
+  </div>
+
+  <!-- Elementos Flotantes sobre el mapa -->
+  <div class="overlay-container">
+    
+    <!-- Top Bar: Offline Badge -->
+    <div class="top-bar">
+      <div class="badge-offline" *ngIf="estaOffline">
+        <div class="dot"></div>
+        Conexión Offline
+      </div>
+    </div>
+
+    <!-- Stats Flotantes (Derecha) -->
+    <div class="floating-stats">
+      <div class="f-stat">
+        <span class="f-val text-primary">{{ kmRecorridos }}</span>
+        <span class="f-lbl">km</span>
+      </div>
+      <div class="divider"></div>
+      <div class="f-stat">
+        <span class="f-val">{{ tiempoFormat }}</span>
+        <span class="f-lbl">tiempo</span>
+      </div>
+      <div class="divider"></div>
+      <div class="f-stat">
+        <span class="f-val text-secondary">{{ ritmo }}</span>
+        <span class="f-lbl">min/km</span>
+      </div>
+    </div>
+
+    <!-- Reproductor Multimedia (Abajo) / Iniciar Caminata -->
+    <div class="bottom-action-container" style="position: absolute; bottom: 20px; left: 20px; right: 20px; z-index: 1000; pointer-events: auto;">
+      <ion-button expand="block" color="primary" class="main-btn" style="height: 60px; font-weight: bold; font-size: 1.1rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,255,115,0.4);" (click)="toggleCaminata()">
+        <ion-icon slot="start" [name]="enCaminata ? 'stop-circle-outline' : 'walk-outline'"></ion-icon>
+        {{ enCaminata ? 'Detener Caminata' : 'Iniciar Caminata/Corrida' }}
+      </ion-button>
+    </div>
+
+    <!-- Botón de centrar mapa -->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="bottom: 90px; right: 10px; pointer-events: auto;">
+      <ion-fab-button size="small" color="dark" (click)="centrarMapa()">
+        <ion-icon name="locate-outline" color="primary"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+  </div>
+
+</ion-content>

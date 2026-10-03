@@ -1,0 +1,94 @@
+<!-- Header removido -->
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="Tira para actualizar" refreshingSpinner="circles"></ion-refresher-content>
+  </ion-refresher>
+  
+  <!-- Tarjeta de Frase del Día (API REST) -->
+  <ion-card class="quote-card">
+    <div class="bg-watermark">JP</div>
+    <ion-card-content>
+      <div class="badge-quote">
+        <div class="dot"></div>
+        FRASE DEL DÍA
+      </div>
+      <h2 class="quote-text">{{ fraseDia }}</h2>
+      <p class="quote-author">&mdash; {{ autorFrase }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Tarjetas de Estadísticas (Grid) -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-header">
+        <ion-icon name="heart" color="danger"></ion-icon>
+        <span>BPM</span>
+      </div>
+      <div class="stat-value text-medium" style="font-size: 1.5rem;">--</div>
+      <div class="stat-sub">Esperando...</div>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-header">
+        <ion-icon name="flame" color="warning"></ion-icon>
+        <span>Cal</span>
+      </div>
+      <div class="stat-value text-medium" style="font-size: 1.5rem;">--</div>
+      <div class="stat-sub">Esperando...</div>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-header">
+        <ion-icon name="footsteps" style="color:#b266ff;"></ion-icon>
+        <span>Pasos</span>
+      </div>
+      <div class="stat-value text-medium" style="font-size: 1.5rem;">--</div>
+      <div class="stat-sub">Esperando...</div>
+    </div>
+  </div>
+
+  <!-- Bluetooth Placeholder -->
+  <ion-card class="bt-card" (click)="escanearBLE()" style="cursor: pointer;">
+    <ion-card-content style="padding: 0;">
+      <ion-item lines="none" class="transparent-item">
+        <div slot="start" class="bt-icon-box" [style.opacity]="smartwatchConectado ? '1' : '0.5'" [style.background]="smartwatchConectado ? 'var(--ion-color-primary)' : 'rgba(255,255,255,0.05)'">
+          <ion-icon name="bluetooth" [style.color]="smartwatchConectado ? '#000' : '#fff'"></ion-icon>
+        </div>
+        <ion-label>
+          <h3>{{ smartwatchConectado ? 'Smartwatch (' + nombreSmartwatch + ')' : 'Sin dispositivo' }}</h3>
+          <p style="color: #a0a0a0; font-size: 0.85rem;">{{ smartwatchConectado ? 'Conectado - Monitoreando' : 'Toca para buscar tu smartwatch' }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Sesión de hoy -->
+  <div class="section-header">
+    <h2>Sesión de hoy</h2>
+  </div>
+
+  <ion-card class="session-card">
+    <ion-item lines="none" class="transparent-item">
+      <div slot="start" class="session-icon">
+        <ion-icon name="barbell-outline" color="warning"></ion-icon>
+      </div>
+      <ion-label>
+        <h3>Día Pecho + Espalda</h3>
+        <p>5 ejercicios &middot; ~45 min</p>
+      </ion-label>
+      <ion-fab-button size="small" slot="end" color="primary" (click)="iniciarRutina()">
+        <ion-icon name="play"></ion-icon>
+      </ion-fab-button>
+    </ion-item>
+  </ion-card>
+
+  <!-- Botón Escanear QR -->
+  <div class="scan-btn-container">
+    <ion-button expand="block" color="primary" class="scan-btn" (click)="escanearQR()">
+      <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+      Escanear QR de Máquina
+    </ion-button>
+  </div>
+
+</ion-content>

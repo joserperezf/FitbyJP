@@ -1,0 +1,7 @@
+{
+  "name": "fit-by-jp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

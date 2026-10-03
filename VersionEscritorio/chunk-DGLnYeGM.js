@@ -1,0 +1,1 @@
+import{K as O,ht as fe}from"./main-WZR3T4KY.js";var n=(()=>{let e=class e{constructor(){this.resetSource=new fe(!1),this.reset$=this.resetSource.asObservable()}triggerReset(){this.resetSource.next(!0)}clearReset(){this.resetSource.next(!1)}};e.ɵfac=function(o){return new(o||e)},e.ɵprov=O({token:e,factory:e.ɵfac,providedIn:`root`});return e})();export{n as t};

@@ -1,0 +1,10 @@
+{
+  "description": "This fitness and health app offers a sleek dark mode interface for tracking workouts, monitoring progress, and motivating users with personalized insights.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
