@@ -10,6 +10,10 @@ Fit by JP es una aplicación móvil multiplataforma diseñada para organizar ent
 - SQLite y Local Storage
 - Plugins Nativos: Cámara, Bluetooth LE, Geolocalización, Red
 
+### Video Demostrativo
+Puedes ver una demostración en vivo de la aplicación funcionando en el siguiente enlace:
+[![Demo Fit by JP](https://img.youtube.com/vi/7-rqYORmqUw/0.jpg)](https://youtu.be/7-rqYORmqUw)
+
 ### Instrucciones de Instalación
 Para ejecutar este proyecto localmente en modo desarrollo:
 
